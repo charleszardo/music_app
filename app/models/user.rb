@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   attr_reader :password
 
+  after_initialize :ensure_session_token
+
   def self.find_by_credentials(creds_hash)
     user = User.find_by_email(cres_hash[:email])
 
@@ -18,5 +20,10 @@ class User < ActiveRecord::Base
   def password=(password)
     puts "HIT PASSWORD=!!!!"
     self.password_digest = BCrypt::Password.create(password)
+  end
+
+  private
+  def ensure_session_token
+    self.session_token ||= SecureRandom::urlsafe_base64(16)
   end
 end
