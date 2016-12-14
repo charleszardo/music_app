@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(creds_hash)
-    user = User.find_by_email(cres_hash[:email])
+    user = User.find_by_email(creds_hash[:email])
 
-    if user
-
+    if user && user.is_password?(creds_hash[:password])
+      user
     else
       flash[:errors] = "Invalid credentials"
     end
