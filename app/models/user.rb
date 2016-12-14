@@ -10,11 +10,7 @@ class User < ActiveRecord::Base
   def self.find_by_credentials(creds_hash)
     user = User.find_by_email(creds_hash[:email])
 
-    if user && user.is_password?(creds_hash[:password])
-      user
-    else
-      flash[:errors] = "Invalid credentials"
-    end
+    user && user.is_password?(creds_hash[:password]) ? user : nil
   end
 
   def self.generate_session_token
