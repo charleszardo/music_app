@@ -8,6 +8,8 @@ class SessionsController < ApplicationController
 
     if user
       login_user!(user)
+
+      redirect_to root_url
     else
       flash[:errors] = "Invalid credentials"
       redirect_to root_url
