@@ -53,7 +53,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root 'users#index'
+  root 'bands#index'
 
   resources :users, only: [:index, :new, :create]
 
