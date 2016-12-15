@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
-  has_many :bands
+  has_many :bands, dependent: :destroy
 
   attr_reader :password
 
