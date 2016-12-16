@@ -2,4 +2,5 @@
 <% @album.tracks.each do |track| %>
   <p><%= link_to track_url(track) %></p>
 <% end %>
-<%= link_to band_url(@album.band) %>
+<%= link_to "Add Track", new_track_url %>
+<%= link_to @album.band_name, band_url(@album.band) %>
