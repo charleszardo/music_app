@@ -6,4 +6,16 @@ class Track < ActiveRecord::Base
   def bonus?
     self.track_type == "bonus"
   end
+
+  def album_title
+    self.album.title
+  end
+
+  def band
+    self.album.band
+  end
+
+  def band_name
+    self.band.name
+  end
 end

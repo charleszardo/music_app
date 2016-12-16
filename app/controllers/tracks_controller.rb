@@ -37,11 +37,12 @@ class TracksController < ApplicationController
 
   def destroy
     @track = Track.find(params[:id])
-
+    album = @track.album
     if @track.destroy
-      redirect_to tracks_url
+      redirect_to album_url(album)
     else
       flash[:errors] = @track.errors.full_messages
+
       redirect_to track_url(@track)
     end
   end
