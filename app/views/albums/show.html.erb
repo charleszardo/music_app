@@ -3,7 +3,7 @@
 <h3>album type: <%= @album.album_type %></h3>
 <h3>Tracks</h3>
 <% @album.tracks.each do |track| %>
-  <p><%= link_to track_url(track) %></p>
+  <p><%= link_to track.title, track_url(track) %></p>
 <% end %>
 <%= link_to "Add Track", new_album_track_url(@album) %>
 <br>
