@@ -22,4 +22,16 @@ class ApplicationController < ActionController::Base
   def user_params
     params.require(:user).permit(:email, :password)
   end
+
+  def require_login
+    unless current_user
+      redirect_to root_url
+    end
+  end
+
+  def require_no_login
+    if current_user
+      redirect_to root url
+    end
+  end
 end
