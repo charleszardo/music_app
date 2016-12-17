@@ -18,4 +18,8 @@ class Track < ActiveRecord::Base
   def band_name
     self.band.name
   end
+
+  def is_owner?(user)
+    self.album.is_owner?(user)
+  end
 end

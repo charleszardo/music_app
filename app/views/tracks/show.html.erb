@@ -4,6 +4,7 @@
 <h4>track type: <%= @track.track_type %></h3>
 <h5>lyrics:</h5>
 <p><%= @track.lyrics %></p>
-
+<% if @track.is_owner?(current_user) %>
 <%= link_to "Edit", edit_track_url(@track) %>
 <%= link_to "Delete", @track, method: :delete %>
+<% end %>

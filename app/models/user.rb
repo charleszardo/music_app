@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_many :bands, dependent: :destroy
+  has_many :albums, through: :bands
 
   attr_reader :password
 

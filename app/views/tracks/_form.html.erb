@@ -10,7 +10,7 @@
 
 <label>Album
   <select name="track[album_id]">
-    <% Album.all.each do |album| %>
+    <% current_user.albums.each do |album| %>
       <option
         <%= "selected" if track.album_id == album.id %>
         value="<%= album.id %>">
