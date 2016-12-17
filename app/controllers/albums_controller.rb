@@ -1,5 +1,6 @@
 class AlbumsController < ApplicationController
   before_action :require_login
+  before_action :require_owner, only: [:edit, :update, :destroy]
 
   def index
     @albums = Album.all
@@ -59,5 +60,12 @@ class AlbumsController < ApplicationController
   private
   def album_params
     params.require(:album).permit(:title, :band_id, :album_type)
+  end
+
+  def require_owner
+    album = Album.find(params[:id])
+    unless album.is_owner?(current_user)
+      redirect_to root_url
+    end
   end
 end

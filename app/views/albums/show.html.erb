@@ -5,7 +5,9 @@
 <% @album.tracks.each do |track| %>
   <p><%= link_to track.title, track_url(track) %></p>
 <% end %>
+<% if @album.is_owner?(current_user) %>
 <%= link_to "Add Track", new_album_track_url(@album) %>
 <br>
 <%= link_to "Edit Album", edit_album_url %>
 <%= link_to "Delete Album", @album, method: :delete %>
+<% end %>

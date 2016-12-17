@@ -11,4 +11,8 @@ class Album < ActiveRecord::Base
   def live?
     self.album_type == "live"
   end
+
+  def is_owner?(user)
+    self.band.is_owner?(user)
+  end
 end
