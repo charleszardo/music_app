@@ -1,5 +1,6 @@
 class BandsController < ApplicationController
   before_action :require_login, except: [:index]
+  before_action :require_owner, only: [:edit, :update, :destroy]
 
   def index
     @bands = Band.all
@@ -64,5 +65,12 @@ class BandsController < ApplicationController
   private
   def band_params
     params.require(:band).permit(:name)
+  end
+
+  def require_owner
+    band = Band.find(params[:id])
+    unless band.is_owner?(current_user)
+      redirect_to root_url
+    end
   end
 end
