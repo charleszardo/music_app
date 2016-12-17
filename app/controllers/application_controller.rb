@@ -31,7 +31,7 @@ class ApplicationController < ActionController::Base
 
   def require_no_login
     if current_user
-      redirect_to root url
+      redirect_to root_url
     end
   end
 end
