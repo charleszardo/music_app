@@ -2,9 +2,13 @@
 <h3>on <%= link_to @track.album_title, album_url(@track.album) %></h3>
 <h3>by <%= link_to @track.band_name, band_url(@track.band) %></h3>
 <h4>track type: <%= @track.track_type %></h3>
-<h5>lyrics:</h5>
+<h4>lyrics</h4>
 <p><%= @track.lyrics %></p>
 <% if @track.is_owner?(current_user) %>
 <%= link_to "Edit", edit_track_url(@track) %>
 <%= link_to "Delete", @track, method: :delete %>
+<% end %>
+<h4>Notes</h4>
+<% @track.notes.each do |note| %>
+<%= render "notes/note", note: note %>
 <% end %>
