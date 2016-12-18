@@ -15,7 +15,25 @@ class NotesController < ApplicationController
   end
 
   def update
-    fail
+    @note = Note.find(params[:id])
+
+    if @note.update_attributes(note_params)
+      redirect_to track_url(@note.track)
+    else
+      flash[:errors] = @note.errors.full_messages
+      redirect_to track_url(@note.track)
+    end
+  end
+
+  def destroy
+    @note = Note.find(params[:id])
+
+    if @note.destroy
+      redirect_to track_url(@note.track)
+    else
+      flash[:errors] = @note.errors.full_messages
+      redirect_to track_url(@note.track)
+    end
   end
 
   private
