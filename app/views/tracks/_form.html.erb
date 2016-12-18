@@ -1,4 +1,4 @@
-<% action = track.persisted? ? track_url(track) : tracks_url %>
+<% action = track.persisted? ? track_note_url(track) : track_notes_url %>
 <% method = track.persisted? ? :patch : :post %>
 
 <form action="<%= action %>" method="POST" %>
