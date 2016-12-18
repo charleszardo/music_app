@@ -1,5 +1,6 @@
 class NotesController < ApplicationController
   before_action :require_login
+  before_action :require_owner, only: [:update, :destroy]
 
   def create
     @note = Note.new(note_params)
@@ -20,5 +21,12 @@ class NotesController < ApplicationController
   private
   def note_params
     params.require(:note).permit(:body, :track_id)
+  end
+
+  def require_owner
+    note = Note.find(params[:id])
+    unless note.is_owner?(current_user)
+      redirect_to root_url
+    end
   end
 end

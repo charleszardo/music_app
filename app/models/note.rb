@@ -7,4 +7,8 @@ class Note < ActiveRecord::Base
   def author_email
     author.email
   end
+
+  def is_owner?(user)
+    self.author == user
+  end
 end
