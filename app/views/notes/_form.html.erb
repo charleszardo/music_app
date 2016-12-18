@@ -1,0 +1,13 @@
+<h4>Add Note</h4>
+
+<% method = note.persisted? ? note_url(note) : notes_url %>
+<% action = note.persisted? ? :patch : :post %>
+
+<form action="index.html" method="post">
+  <label for="note_body">Body</label>
+  <textarea name="note[body]" rows="8" cols="80" id="note_body">
+    <%= note.body %>
+  </textarea>
+  <br>
+  <input type="submit" value="submit">
+</form>
