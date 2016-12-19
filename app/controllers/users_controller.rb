@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     if @user.save
       login_user!(@user)
-      redirect_to users_url
+      redirect_to root_url
     else
       render :new
     end
