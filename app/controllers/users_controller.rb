@@ -1,6 +1,22 @@
 class UsersController < ApplicationController
   before_action :require_no_login, only: [:new, :create]
-  before_action :require_login, only: [:index]
+  before_action :require_admin, only: [:index]
+
+  def make_admin
+    @user = User.find(params[:id])
+    @user.make_admin
+    @user.save
+
+    redirect_to users_url
+  end
+
+  def revoke_admin
+    @user = User.find(params[:id])
+    @user.revoke_admin
+    @user.save
+
+    redirect_to users_url
+  end
 
   def index
     @users = User.all

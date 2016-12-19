@@ -1,3 +1,9 @@
-<% @users.each do |user| %>
+<% @users.order(:id).each do |user| %>
 <p><%= user.email %></p>
+<% if user == current_user %>
+<% elsif user.is_admin? %>
+  <%= button_to "revoke admin", revoke_admin_user_url(user)%>
+<% else %>
+  <%= button_to "make admin", make_admin_user_url(user)%>
+<% end %>
 <% end %>
