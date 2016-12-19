@@ -50,7 +50,7 @@ class TracksController < ApplicationController
   end
 
   def show
-    @track = Track.find(params[:id])
+    @track = Track.includes(:notes => [:author]).find(params[:id])
     @note = Note.new
 
     render :show
