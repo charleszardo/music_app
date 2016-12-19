@@ -16,4 +16,6 @@
 <%= link_to "Delete", note, method: :delete %>
 <% end %>
 <% end %>
+<% if admin? %>
 <%= render "notes/form", track: @track, note: @note %>
+<% end %>

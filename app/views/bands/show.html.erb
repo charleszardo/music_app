@@ -5,5 +5,7 @@
 <% if @band.is_owner?(current_user) %>
 <%= link_to "edit", edit_band_url(@band) %>
 <%= link_to "delete", @band, method: :delete %>
+<% end %>
+<% if admin? %>
 <%= link_to "add album", new_band_album_url(@band) %>
 <% end %>
