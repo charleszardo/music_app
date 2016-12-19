@@ -1,4 +1,6 @@
-<% action = track.persisted? ? track_url(track) : track_url %>
+<%= render "shared/errors", item: track %>
+
+<% action = track.persisted? ? track_url(track) : tracks_url %>
 <% method = track.persisted? ? :patch : :post %>
 
 <form action="<%= action %>" method="POST" %>
