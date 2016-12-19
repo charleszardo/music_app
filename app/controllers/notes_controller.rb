@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :require_login
   before_action :require_owner, only: [:update, :destroy, :edit]
+  before_action :require_admin, only: [:create]
 
   def create
     @note = Note.new(note_params)

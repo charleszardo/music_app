@@ -34,4 +34,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
+  def require_admin
+    require_login
+    unless current_user.is_admin?
+      redirect_to root_url
+    end
+  end
 end

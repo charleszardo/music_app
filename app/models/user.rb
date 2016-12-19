@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
 
+  def is_admin?
+    self.admin
+  end
+
   def reset_session_token!
     self.session_token = User.generate_session_token
     self.save!
