@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :require_login
-  before_action :require_owner, only: [:update, :destroy]
+  before_action :require_owner, only: [:update, :destroy, :edit]
 
   def create
     @note = Note.new(note_params)
@@ -12,6 +12,12 @@ class NotesController < ApplicationController
       flash[:errors] = @note.errors.full_messages
       redirect_to track_url(@note.track)
     end
+  end
+
+  def edit
+    @note = Note.find(params[:id])
+
+    render :edit
   end
 
   def update

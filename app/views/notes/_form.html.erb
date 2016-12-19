@@ -1,5 +1,3 @@
-<h4>Add Note</h4>
-
 <% action = note.persisted? ? note_url(note) : notes_url %>
 <% method = note.persisted? ? :patch : :post %>
 
@@ -8,9 +6,7 @@
   <%= auth_token %>
   <input type="hidden" name="note[track_id]" value="<%= track.id %>">
   <label for="note_body">Body</label>
-  <textarea name="note[body]" rows="8" cols="80" id="note_body">
-    <%= note.body %>
-  </textarea>
+  <textarea name="note[body]" rows="8" cols="80" id="note_body"><%= note.body %></textarea>
   <br>
   <input type="submit" value="submit">
 </form>
