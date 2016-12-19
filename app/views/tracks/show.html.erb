@@ -3,7 +3,7 @@
 <h3>by <%= link_to @track.band_name, band_url(@track.band) %></h3>
 <h4>track type: <%= @track.track_type %></h3>
 <h4>lyrics</h4>
-<p><%= @track.lyrics %></p>
+<%= ugly_lyrics(@track.lyrics) %>
 <% if @track.is_owner?(current_user) %>
 <%= link_to "Edit", edit_track_url(@track) %>
 <%= link_to "Delete", @track, method: :delete %>
