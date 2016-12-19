@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       login_user!(@user)
       redirect_to users_url
     else
-      render json: @user.errors.full_messages
+      render :new
     end
   end
 end

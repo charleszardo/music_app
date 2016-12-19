@@ -20,8 +20,7 @@ class AlbumsController < ApplicationController
     if @album.save
       redirect_to album_url(@album)
     else
-      flash[:errors] = @album.errors.full_messages
-      redirect_to new_album_url
+      render :new
     end
   end
 
@@ -37,8 +36,7 @@ class AlbumsController < ApplicationController
     if @album.update_attributes(album_params)
       redirect_to album_url(@album)
     else
-      flash[:errors] = @album.errors.full_messages
-      redirect_to edit_album_url(@album)
+      render :edit
     end
   end
 
@@ -52,8 +50,7 @@ class AlbumsController < ApplicationController
     if @album.destroy
       redirect_to albums_url
     else
-      flash[:errors] = @album.errors.full_messages
-      redirect_to album_url(@album)
+      render :show
     end
   end
 

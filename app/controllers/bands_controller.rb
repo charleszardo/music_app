@@ -21,9 +21,7 @@ class BandsController < ApplicationController
     if @band.save
       redirect_to band_url(@band)
     else
-      flash[:errors] = @band.errors.full_messages
-
-      redirect_to new_band_url
+      render :new
     end
   end
 
@@ -39,9 +37,7 @@ class BandsController < ApplicationController
     if @band.update_attributes(band_params)
       redirect_to band_url(@band)
     else
-      flash[:errors] = @band.errors.full_messages
-
-      redirect_to edit_band_url(@band)
+      render :edit
     end
   end
 
@@ -57,8 +53,7 @@ class BandsController < ApplicationController
     if @band.destroy
       redirect_to bands_url
     else
-      flash[:errors] = @band.errors.full_messages
-      redirect_to band_url(@band)
+      render :show
     end
   end
 

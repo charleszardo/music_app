@@ -41,9 +41,7 @@ class TracksController < ApplicationController
     if @track.destroy
       redirect_to album_url(album)
     else
-      flash[:errors] = @track.errors.full_messages
-
-      redirect_to track_url(@track)
+      render :show
     end
   end
 
