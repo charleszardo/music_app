@@ -12,5 +12,6 @@
 <% @track.notes.each do |note| %>
 <%= render "notes/note", note: note %>
 <%= link_to "Edit", edit_note_url(note) %>
+<%= link_to "Delete", note, method: :delete %>
 <% end %>
 <%= render "notes/form", track: @track, note: @note %>
