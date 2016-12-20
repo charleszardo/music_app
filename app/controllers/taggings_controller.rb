@@ -8,6 +8,6 @@ class TaggingsController < ApplicationController
 
   private
   def tagging_params
-    params.require(:tagging).permit(:tag, :tagging_id, :tagging_type)
+    params.require(:tagging).permit(:tag, :taggable_id, :taggable_type)
   end
 end
