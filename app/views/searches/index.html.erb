@@ -1,4 +1,9 @@
+<table>
+  <tr>
+    <th>Result</th>
+    <th>Type</th>
+  </tr>
 <% @results.each do |result| %>
-<p><%= result.display %></p>
-<p><%= result.class %></p>
+<%= render "result", result: result %>
 <% end %>
+</table>

@@ -1,0 +1,11 @@
+<% rclass = result.class.to_s %>
+<tr>
+  <td><%= link_to result.display, url_for(result) %></td>
+  <td><%= rclass %></td>
+  <% if rclass.in?(["Track", "Album"]) %>
+  <td> by <%= link_to result.band.display, url_for(result.band) %></td>
+  <% end %>
+  <% if rclass == "Track" %>
+  <td> on <%= link_to result.album.display, url_for(result.album) %></td>
+  <% end %>
+</tr>
