@@ -14,16 +14,7 @@ class SearchesController < ApplicationController
 
   private
   def search_models(type)
-    case type
-    when "bands"
-      return Band
-    when "albums"
-      return Album
-    when "tracks"
-      return Track
-    else
-      return [Band, Album, Track]
-    end
+    type == "all" ? [Band, Album, Track] : type.classify.constantize
   end
 
   def search_params
