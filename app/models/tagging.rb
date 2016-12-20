@@ -6,7 +6,7 @@ class Tagging < ActiveRecord::Base
   validates_uniqueness_of :tag_id, scope: [:taggable_id, :taggable_type]
 
   def tag=(tag_name)
-    tag = Tag.find_or_create_by_tag(tag_name)
+    tag = Tag.find_or_create_by(text: tag_name)
     self.tag_id = tag.id
   end
 
