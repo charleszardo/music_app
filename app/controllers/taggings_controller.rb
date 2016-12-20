@@ -1,5 +1,6 @@
 class TaggingsController < ApplicationController
   before_action :require_admin
+  before_action :require_admin, only: [:destroy]
 
   def create
     @tagging = Tagging.new(tagging_params)
