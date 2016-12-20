@@ -8,6 +8,13 @@ class TaggingsController < ApplicationController
     redirect_to tagging_show
   end
 
+  def destroy
+    @tagging = Tagging.find(params[:id])
+    @tagging.destroy
+
+    redirect_to tagging_show
+  end
+
   private
   def tagging_params
     params.require(:tagging).permit(:tag, :taggable_id, :taggable_type)

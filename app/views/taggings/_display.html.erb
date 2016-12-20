@@ -1,0 +1,6 @@
+<h4>Tags</h4>
+<ul>
+<% taggings.each do |tagging| %>
+<li><%= tagging.tag_text %><%= button_to "delete", tagging, method: :delete %></li>
+<% end %>
+</ul>

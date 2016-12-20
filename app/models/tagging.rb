@@ -9,4 +9,8 @@ class Tagging < ActiveRecord::Base
     tag = Tag.find_or_create_by_tag(tag_name)
     self.tag_id = tag.id
   end
+
+  def tag_text
+    self.tag.text
+  end
 end

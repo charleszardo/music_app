@@ -11,5 +11,5 @@
 <%= link_to "Edit Album", edit_album_url %>
 <%= link_to "Delete Album", @album, method: :delete %>
 <% end %>
-<%= render "tags/display", tags: @album.tags %>
+<%= render "taggings/display", taggings: @album.taggings %>
 <%= render "taggings/form", taggable_type: @album.class, taggable_id: @album.id %>
