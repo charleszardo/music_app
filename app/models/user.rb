@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
   end
 
   def password=(password)
-    puts "HIT PASSWORD=!!!!"
     self.password_digest = BCrypt::Password.create(password)
   end
 
