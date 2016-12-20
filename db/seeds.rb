@@ -11,20 +11,30 @@ def generate_lyrics
   lyrics.split(". ").map { |line| line += "\r\n"}.join("").strip
 end
 
+def generate_band(user)
+  band_name = Faker::Superhero.name
+  Band.create(name: band_name, user_id: user.id)
+end
+
+def generate_album(band)
+  album_title = Faker::Space.nebula
+  Album.create(title: album_title, band_id: band.id, album_type: "studio")
+end
+
+def generate_track(album)
+  track_title = Faker::Hipster.sentence
+  lyrics = generate_lyrics
+  Track.create(title: track_title, album_id: album.id, track_type: "regular", lyrics: lyrics)
+end
+
 user = User.create(email: "admin", password: "123456", admin: true)
 
 5.times do
-  band_name = Faker::Superhero.name
-  band = Band.create(name: band_name, user_id: user.id)
-
+  band = generate_band(user)
   3.times do
-    album_title = Faker::Space.nebula
-    album = Album.create(title: album_title, band_id: band.id, album_type: "studio")
-
+    album = generate_album(band)
     10.times do
-      track_title = Faker::Hipster.sentence
-      lyrics = generate_lyrics
-      track = Track.create(title: track_title, album_id: album.id, track_type: "regular", lyrics: lyrics)
+      generate_track(album)
     end
   end
 end
