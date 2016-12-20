@@ -1,4 +1,6 @@
 class TaggingsController < ApplicationController
+  before_action :require_admin
+
   def create
     @tagging = Tagging.new(tagging_params)
 
