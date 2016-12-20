@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 
   has_many :bands, dependent: :destroy
   has_many :albums, through: :bands
-  has_many :notes
+  has_many :notes, dependent: :destroy
 
   attr_reader :password
 

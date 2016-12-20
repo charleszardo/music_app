@@ -3,7 +3,7 @@ class Album < ActiveRecord::Base
 
   belongs_to :band
   has_many :tracks, dependent: :destroy
-  has_many :taggings, as: :taggable
+  has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
   def band_name
