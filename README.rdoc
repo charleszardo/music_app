@@ -1,5 +1,12 @@
-== TODO
+= Music App
+Rails app used to inventory bands, albums, and tracks.  Allows tagging, adding notes, and searching using {Sunspot}[http://sunspot.github.io/].
+
+=== Run
+* Install dependencies with <tt>bundle install</tt>
+* Seed database <tt>rake db:seed</tt>
+
+=== TODO
 
 * ActionMailer/activate account
-* Finish search
+* Improve search
 * Styling/Front-end
