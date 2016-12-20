@@ -4,6 +4,7 @@ class Band < ActiveRecord::Base
 
   belongs_to :owner, class_name: "User", foreign_key: :user_id
   has_many :albums, dependent: :destroy
+  has_many :tracks, through: :albums
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
