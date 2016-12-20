@@ -6,6 +6,7 @@
 <%= link_to "edit", edit_band_url(@band) %>
 <%= link_to "delete", @band, method: :delete %>
 <% end %>
+<%= render "tags/display", tags: @band.tags %>
 <% if admin? %>
 <%= link_to "add album", new_band_album_url(@band) %>
 <% end %>
