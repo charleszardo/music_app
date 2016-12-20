@@ -8,6 +8,9 @@ class Track < ActiveRecord::Base
 
   searchable do
     text :title
+    text :tags do
+      tags.map(&:text)
+    end
   end
 
   def bonus?
@@ -28,5 +31,9 @@ class Track < ActiveRecord::Base
 
   def is_owner?(user)
     self.album.is_owner?(user)
+  end
+
+  def display
+    self.title
   end
 end

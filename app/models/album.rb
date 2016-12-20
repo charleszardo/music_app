@@ -8,6 +8,9 @@ class Album < ActiveRecord::Base
 
   searchable do
     text :title
+    text :tags do
+      tags.map(&:text)
+    end
   end
 
   def band_name
@@ -20,5 +23,9 @@ class Album < ActiveRecord::Base
 
   def is_owner?(user)
     self.band.is_owner?(user)
+  end
+
+  def display
+    self.title
   end
 end

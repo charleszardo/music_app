@@ -9,9 +9,16 @@ class Band < ActiveRecord::Base
 
   searchable do
     text :name
+    text :tags do
+      tags.map(&:text)
+    end
   end
 
   def is_owner?(user)
     self.owner == user
+  end
+
+  def display
+    self.name
   end
 end
