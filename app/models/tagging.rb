@@ -5,7 +5,7 @@ class Tagging < ActiveRecord::Base
   belongs_to :tag
 
   def tag=(tag_name)
-    tag = Tag.find_or_create_by_tag
+    tag = Tag.find_or_create_by_tag(tag_name)
     self.tag_id = tag.id
   end
 end
