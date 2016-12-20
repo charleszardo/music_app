@@ -3,6 +3,8 @@ class Track < ActiveRecord::Base
 
   belongs_to :album
   has_many :notes
+  has_many :taggings, as: :taggable
+  has_many :tags, through: :taggings
 
   def bonus?
     self.track_type == "bonus"
