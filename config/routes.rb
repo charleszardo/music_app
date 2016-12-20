@@ -19,4 +19,6 @@ Rails.application.routes.draw do
   resources :tracks, except: [:index, :new]
 
   resources :notes, only: [:create, :update, :destroy, :edit]
+
+  resources :taggings, only: [:create]
 end
