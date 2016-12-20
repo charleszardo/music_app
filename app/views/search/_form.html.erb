@@ -1,5 +1,11 @@
+<%= form_tag search_path, :method => :post do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
 <form action="<%= search_path %>" method="post">
-  <%= auth_token %>
   <input type="text" name="search[query]">
   <select name="search[type]">
     <option value="all">All</option>
