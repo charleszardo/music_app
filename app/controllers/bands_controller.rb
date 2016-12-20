@@ -5,7 +5,11 @@ class BandsController < ApplicationController
 
   def index
     @bands = Band.all
+    @search = Band.search do
+                fulltext params[:search]
+              end
 
+    @bands = @search.results
     render :index
   end
 

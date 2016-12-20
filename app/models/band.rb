@@ -7,6 +7,10 @@ class Band < ActiveRecord::Base
   has_many :taggings, as: :taggable
   has_many :tags, through: :taggings
 
+  searchable do
+    text :name
+  end
+
   def is_owner?(user)
     self.owner == user
   end
