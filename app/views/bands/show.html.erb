@@ -8,5 +8,6 @@
 <% end %>
 <%= render "tags/display", tags: @band.tags %>
 <% if admin? %>
+<%= render "taggings/form", taggable_type: @band.class, taggable_id: @band.id %>
 <%= link_to "add album", new_band_album_url(@band) %>
 <% end %>
