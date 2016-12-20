@@ -42,6 +42,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'sunspot_solr'
+  gem 'faker'
 end
 
 group :development do
