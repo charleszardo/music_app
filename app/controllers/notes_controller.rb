@@ -38,12 +38,4 @@ class NotesController < ApplicationController
   def note_params
     params.require(:note).permit(:body, :track_id)
   end
-
-  def require_owner
-    note = Note.find(params[:id])
-    unless note.is_owner?(current_user)
-      render status: 403
-      render status: :forbidden
-    end
-  end
 end

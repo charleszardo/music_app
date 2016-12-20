@@ -46,4 +46,11 @@ class ApplicationController < ActionController::Base
       redirect_to root_url
     end
   end
+
+  def require_owner
+    item = Object.const_get(controller_name.classify).find(params[:id])
+    unless item.is_owner?(current_user)
+      redirect_to root_url
+    end
+  end
 end

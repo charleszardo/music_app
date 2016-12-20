@@ -62,11 +62,4 @@ class BandsController < ApplicationController
   def band_params
     params.require(:band).permit(:name)
   end
-
-  def require_owner
-    band = Band.find(params[:id])
-    unless band.is_owner?(current_user)
-      redirect_to root_url
-    end
-  end
 end

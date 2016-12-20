@@ -57,11 +57,4 @@ class TracksController < ApplicationController
   def track_params
     params.require(:track).permit(:title, :album_id, :track_type, :lyrics)
   end
-
-  def require_owner
-    track = Track.find(params[:id])
-    unless track.is_owner?(current_user)
-      redirect_to root_url
-    end
-  end
 end
