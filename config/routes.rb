@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   resources :notes, only: [:create, :update, :destroy, :edit]
 
   resources :taggings, only: [:create, :destroy]
+
+  resource :search, only: [:create, :index]
 end

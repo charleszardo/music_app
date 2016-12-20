@@ -6,6 +6,10 @@ class Track < ActiveRecord::Base
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
+  searchable do
+    text :title
+  end
+
   def bonus?
     self.track_type == "bonus"
   end

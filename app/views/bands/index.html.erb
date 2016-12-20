@@ -5,10 +5,3 @@
 <% if admin? %>
 <%= link_to "Add Band", new_band_url %>
 <% end %>
-
-<%= form_tag bands_path, :method => :get do %>
-  <p>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search", :name => nil %>
-  </p>
-<% end %>

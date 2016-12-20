@@ -6,6 +6,10 @@ class Album < ActiveRecord::Base
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings
 
+  searchable do
+    text :title
+  end
+
   def band_name
     self.band.name
   end
