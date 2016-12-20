@@ -19,3 +19,4 @@
 <% if admin? %>
 <%= render "notes/form", track: @track, note: @note %>
 <% end %>
+<%= render "tags/display", tags: @track.tags %>
