@@ -32,10 +32,12 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    msg = UserMailer.welcome_email(@user)
-    msg.deliver_now
 
     if @user.save
+      redirect_to root_url
+      msg = UserMailer.activation_email(@user)
+      msg.deliver_now
+      flash[:notice] = "Successfully created your account! Check your inbox for an activation email."
       redirect_to root_url
     else
       render :new
