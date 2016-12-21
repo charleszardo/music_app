@@ -18,6 +18,6 @@
 <% end %>
 <% if admin? %>
 <%= render "notes/form", track: @track, note: @note %>
+<%= render "taggings/form", taggable_type: @track.class, taggable_id: @track.id %>
 <% end %>
 <%= render "taggings/display", taggings: @track.taggings %>
-<%= render "taggings/form", taggable_type: @track.class, taggable_id: @track.id %>

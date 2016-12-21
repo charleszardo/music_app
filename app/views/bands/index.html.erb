@@ -2,6 +2,6 @@
 <% @bands.each do |band| %>
 <p><%= link_to band.name, band_url(band) %></p>
 <% end %>
-<% if admin? %>
+<% if logged_in? %>
 <%= link_to "Add Band", new_band_url %>
 <% end %>
