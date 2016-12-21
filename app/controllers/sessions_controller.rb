@@ -8,10 +8,14 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by_credentials(user_params)
 
-    if user
+    if user && user.activated
       login_user!(user)
 
       redirect_to root_url
+    elsif user
+      flash[:errors] = "Account not activated"
+
+      render :new
     else
       render :new
     end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create] do
     post "make_admin", on: :member
     post "revoke_admin", on: :member
+    get "activate", on: :collection
   end
 
   resource :session, only: [:new, :create, :destroy]

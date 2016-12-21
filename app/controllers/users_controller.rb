@@ -32,12 +32,25 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    msg = UserMailer.welcome_email(@user)
+    msg.deliver_now
 
     if @user.save
-      login_user!(@user)
       redirect_to root_url
     else
       render :new
+    end
+  end
+
+  def activate
+    user = User.find_by_activation_token(params[:activation_token])
+    if user
+      user.activated = true
+      login_user!(user)
+      redirect_to root_url
+    else
+      flash[:errors] = "Invalid activation token"
+      redirect_to root_url
     end
   end
 end
