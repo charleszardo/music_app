@@ -17,7 +17,9 @@
 
   <%= yield %>
   <footer>
+    <% if logged_in? %>
     <%= render "searches/form" %>
+    <% end %>
     <% unless current_page?("/") || current_page?("/bands") %>
       <%= link_to "Home", root_url %>
     <% end %>
